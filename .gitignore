@@ -1,0 +1,17 @@
+.vscode
+.env
+/venv
+**node_modules**
+**pnpm-lock.yaml**
+
+# Film Series
+/film-series/topics.csv
+
+# Letterboxd
+/letterboxd/.vscode
+
+# server
+/server/config.env
+
+# cli
+/cli/.env
