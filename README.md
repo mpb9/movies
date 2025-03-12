@@ -34,7 +34,7 @@
 ### Structure
 
 ```shell
-├── client/                # React frontend
+├── cli/                   # React frontend
 │   ├── public/            # Static assets
 │   ├── src/               # React source code
 │   │   ├── components/    # Reusable components
@@ -43,20 +43,28 @@
 │   │   ├── App.jsx        # Main app component
 │   │   ├── index.jsx      # Entry point
 │   │   └── ...
-│   ├── package.json       # Client dependencies
 │   ├── .env               # Environment variables
+│   ├── package.json       # Client dependencies
 │   └── ...
 ├── server/                # Express backend
+│   ├── config/            # Configuration files
 │   ├── controllers/       # Route handlers
+│   ├── db/                # Database connections
 │   ├── models/            # Data models
 │   ├── routes/            # API routes
-│   ├── config/            # Configuration files
-│   ├── server.js          # Express server setup
+│   ├── schemas/           # API schemas
+│   ├── config.env         # Environment variables
+│   ├── index.js           # Express server setup
 │   ├── package.json       # Server dependencies
-│   ├── .env               # Environment variables
+│   └── ...
+├── film-series/           # Film Series files
+│   └── ...
+├── letterboxd/            # Letterboxd files
+│   └── ...
+├── venv/                  # Python virtual env
 │   └── ...
 ├── .gitignore             # Git ignore file
-├── package.json           # Root dependencies (optional)
+├── requirements.json      # venv dependencies
 └── README.md
 ```
 
