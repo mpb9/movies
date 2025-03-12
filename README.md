@@ -22,7 +22,7 @@
 
 ### MERN Stack
 
-- MonogoDB - NoSQL database
+- MongoDB - NoSQL database
 - Express.js - backend web app framework for Node.js
 - React.js v19 - JavaScript library for building UIs
 - Node.js: v22.14.0 - JavaScript runtime environment
