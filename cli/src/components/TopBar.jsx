@@ -8,7 +8,7 @@ export default function TopBar() {
         to="/"
         className="btn cursor-pointer rounded-xl bg-[var(--gray)] p-1 flex items-center justify-around hover:scale-105 transition-transform duration-300"
       >
-        <House weight="duotone" size={36} color="var(--d-gray)" />
+        <House weight="duotone" size={28} color="var(--d-gray)" />
       </NavLink>
     </div>
   );

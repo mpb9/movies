@@ -14,10 +14,10 @@ export default function SideBar() {
   const [sites, setSites] = useState(null);
 
   const sideBarContainerCss =
-    "w-22 h-[100vh] pl-2 pr-3 pt-3 flex flex-col items-center justify-start border-none bg-[var(--d-gray)] curtain-left";
+    "w-22 h-[100vh] pl-2 pr-3 pt-3 flex flex-col items-center justify-start border-none bg-[var(--d-gray)]";
 
   useEffect(() => {
-    httpRequest("/api/site/subscribed/cat/streaming")
+    httpRequest("/api/site/subscribed/1/cat/streaming")
       .then((res) => {
         setTimeout(() => {
           setSites(res.sites);

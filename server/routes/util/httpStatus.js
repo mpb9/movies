@@ -1,4 +1,4 @@
-export const HttpStatusCode = {
+export const HttpStatus = {
   Continue: 100,
   SwitchingProtocols: 101,
   Processing: 102,

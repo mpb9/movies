@@ -2,10 +2,13 @@ import express from "express";
 import {
   addSiteCat,
   createSiteCat,
+  deleteAllSiteCats,
+  deleteSiteCat,
   getSiteCats,
+  updateSiteCat,
 } from "../controllers/siteCat.controller.js";
 import { initialSiteCatColl } from "../models/data/siteCat.data.js";
-import { HttpStatusCode } from "./util/httpStatus.js";
+import { HttpStatus } from "./util/httpStatus.js";
 
 const router = express.Router();
 
@@ -15,34 +18,32 @@ router.get("/", async (req, res) => {
   let siteCats = await getSiteCats();
 
   if (!siteCats)
-    res.status(HttpStatusCode.NotFound).json("No site categories found");
-  else res.status(HttpStatusCode.Ok).json({ siteCats });
+    res.status(HttpStatus.NotFound).json("No site categories found");
+  else res.status(HttpStatus.Ok).json({ siteCats });
 });
 
 // info: By name
-router.get("/:name", async (req, res) => {
-  const filter = { name: req.params.name };
-  let siteCats = await getSiteCats(filter);
+router.get("/name/:name", async (req, res) => {
+  let siteCats = await getSiteCats({ name: req.params.name });
 
   if (!siteCats)
-    res.status(HttpStatusCode.NotFound).json("No site categories found");
-  else res.status(HttpStatusCode.Ok).json({ siteCats });
+    res.status(HttpStatus.NotFound).json("No site categories found");
+  else res.status(HttpStatus.Ok).json({ siteCats });
 });
 
 // MARK: POST
 // info: Add Site Category
 router.post("/", async (req, res) => {
   let results = await addSiteCat(req.body);
+
   if (!results)
-    res.status(HttpStatusCode.Conflict).json("Site Category Already Exists");
-  else res.status(HttpStatusCode.Created).json(req.body);
+    res.status(HttpStatus.Conflict).json("Site Category Already Exists");
+  else res.status(HttpStatus.Created).json(req.body);
 });
 
 // info: Create coll
 router.post("/create", async (req, res) => {
-  if (req.body.coll) {
-    initialSiteCatColl.push(...req.body);
-  }
+  if (req.body.coll) initialSiteCatColl.push(...req.body);
 
   let results;
 
@@ -51,7 +52,7 @@ router.post("/create", async (req, res) => {
   } catch (err) {
     console.error(err);
     res
-      .status(HttpStatusCode.NotAcceptable)
+      .status(HttpStatus.NotAcceptable)
       .json("Failed to initialize site categories collection");
   }
 
@@ -59,15 +60,40 @@ router.post("/create", async (req, res) => {
     try {
       results = addSiteCat(doc);
       if (!results)
-        res
-          .status(HttpStatusCode.Conflict)
-          .json("Site Category Already Exists");
+        res.status(HttpStatus.Conflict).json("Site Category Already Exists");
     } catch (err) {
       console.error(err);
     }
   });
 
-  res.status(HttpStatusCode.Created).json(req.body);
+  res.status(HttpStatus.Created).json(req.body);
+});
+
+// MARK: PUT
+// info: Update site category by name
+router.put("/name/:name", async (req, res) => {
+  let results = await updateSiteCat({ name: req.params.name }, req.body);
+
+  if (!results) res.status(HttpStatus.NotFound).json("Site Category Not Found");
+  else res.status(HttpStatus.Ok).json(req.body);
+});
+
+// MARK: DELETE
+// info: Delete all site categories
+router.delete("/", async (req, res) => {
+  let results = await deleteAllSiteCats();
+
+  if (!results)
+    res.status(HttpStatus.NotFound).json("Site Categories Not Found");
+  else res.status(HttpStatus.Ok).json("Site Categories Deleted");
+});
+
+// info: Delete site category by name
+router.delete("/name/:name", async (req, res) => {
+  let results = await deleteSiteCat({ name: req.params.name });
+
+  if (!results) res.status(HttpStatus.NotFound).json("Site Category Not Found");
+  else res.status(HttpStatus.Ok).json("Site Category Deleted");
 });
 
 export default router;

@@ -13,6 +13,10 @@ const siteCatSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
+  navLink: {
+    type: String,
+    required: false,
+  },
 });
 
 const SiteCat = mongoose.model("SiteCat", siteCatSchema);

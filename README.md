@@ -121,9 +121,9 @@ CLUSTER ⇨ DATABASE ⇨ COLLECTION ⇨ DOCUMENT ⇨ FIELD: VALUE
   - multiple: ```/postDocs```
   - individual: ```/postDoc```
 - DELETE
-  - by id: ```/rmById```
-  - by field(s): ```/rmBy<field>And<field>...```
-  - entire collection: ```/rmAll```
+  - by id: ```/deleteById```
+  - by field(s): ```/deleteBy<field>And<field>...```
+  - entire collection: ```/deleteAll```
 - HTTP Responses
   - individual ```doc``` requested: ```<coll>``` *(no trailing "s")*
   - number of ```doc```s requested uncertain: ```<coll>s```
@@ -158,6 +158,7 @@ CLUSTER ⇨ DATABASE ⇨ COLLECTION ⇨ DOCUMENT ⇨ FIELD: VALUE
 - [ ] Create & link youtube playlists for trailers, music moments, etc. in list descriptions instead of having to add video links to each entry
 - [ ] Create & link spotify playlists for soundracks, music moments, etc. in list descriptions instead of having to add song links to each entry
 - [ ] Make the sides of one of my pages look like curtains in a theater (and the top)
+- [ ] [editable data grid/spreadsheet](https://github.com/ag-grid/ag-grid)
 
 ### Long-term
 

@@ -1,5 +1,5 @@
 import { RouterProvider } from "react-router-dom";
-import BottomBar from "./components/bottomBar";
+import BottomBar from "./components/BottomBar";
 import SideBar from "./components/SideBar";
 import { router } from "./routes";
 export default function App() {

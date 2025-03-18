@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
-import Home from "./pages/home";
-import Spreadsheet from "./pages/spreadsheet";
+import Boxd from "./pages/Boxd";
+import Home from "./pages/Home";
+import Spreadsheet from "./pages/Spreadsheet";
 
 export const router = createBrowserRouter([
   {
@@ -11,5 +12,9 @@ export const router = createBrowserRouter([
   {
     path: "/spreadsheet",
     Component: Spreadsheet,
+  },
+  {
+    path: "/boxd",
+    Component: Boxd,
   },
 ]);
