@@ -1,23 +1,5 @@
 # The Movies :smile::popcorn:
 
-## On-Screen
-
-### Film Series
-
-### Letterboxd
-
-### Links
-
-- Film Series
-  - [Dossier](https://docs.google.com/document/d/1dl00sQH2cXBExBTZp5KaAWoJ_r9gFSnaCfZxn-lVTEM/edit?usp=sharing)
-
-- Letterboxd
-  - [Profile](https://letterboxd.com/michaelbeebe)
-  - [Main Menu](https://letterboxd.com/michaelbeebe/list/main-menu/detail)
-  - [Diary](https://letterboxd.com/michaelbeebe/films/diary)
-
----
-
 ## Behind the Scenes
 
 ### MERN Stack
@@ -37,22 +19,23 @@
 ├── cli/                   # React frontend
 │   ├── public/            # Static assets
 │   ├── src/               # React source code
+│   │   ├── assets/        # Static resources
 │   │   ├── components/    # Reusable components
 │   │   ├── pages/         # Page-level components
 │   │   ├── services/      # API client logic
 │   │   ├── App.jsx        # Main app component
-│   │   ├── index.jsx      # Entry point
-│   │   └── ...
+│   │   ├── main.jsx       # Entry point
+│   │   ├── routes.js      # Frontend routing rules
+│   │   └── index.css       
 │   ├── .env               # Environment variables
 │   ├── package.json       # Client dependencies
 │   └── ...
 ├── server/                # Express backend
-│   ├── config/            # Configuration files
+│   ├── apis/              # External API info
 │   ├── controllers/       # Route handlers
 │   ├── db/                # Database connections
 │   ├── models/            # Data models
 │   ├── routes/            # API routes
-│   ├── schemas/           # API schemas
 │   ├── config.env         # Environment variables
 │   ├── index.js           # Express server setup
 │   ├── package.json       # Server dependencies
@@ -70,6 +53,19 @@
 
 ### Frontend (cli)
 
+```shell
+# ~/.../movies
+
+# Initialize
+pnpm create vite@latest cli -- --template react
+cd cli
+pnpm install
+pnpm add tailwindcss @tailwindcss/vite @phosphor-icons/react prop-types axios
+
+# Run Locally
+pnpm dev
+```
+
 #### React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
@@ -81,51 +77,76 @@ Currently, two official plugins are available:
 
 ### Backend (server)
 
-### Commands
-
-#### Set-up
-
-```shell
-mkdir movies && cd movies
-```
-
-##### Frontend
-
 ```shell
 # ~/.../movies
-pnpm create vite@latest --template react # name: cli
-cd cli
-pnpm install
-pnpm add tailwindcss @tailwindcss/vite axios
-```
 
-##### Backend
-
-```shell
-# ~/.../movies
+# Initialize
 mkdir server && cd server
 pnpm init
 pnpm add mongodb express cors mongoose
 pnpm add nodemon -D
-```
 
-#### Run
-
-##### cli
-
-```shell
-# ~/.../movies/cli
+# Run Locally
 pnpm dev
 ```
 
-##### server
+#### NoSQL - MongoDB
 
-```shell
-# ~/.../movies/server
-pnpm dev
-```
+Document-oriented database
 
----
+##### Hierarchy
+
+CLUSTER ⇨ DATABASE ⇨ COLLECTION ⇨ DOCUMENT ⇨ FIELD: VALUE
+
+### Syntax
+
+#### Database Variables
+
+- cluster: ```cluster```
+- database: ```db```
+- collection: ```coll```
+- document: ```doc```
+- field: ```field```
+- value: ```val```
+
+#### REST Variables
+
+- API Path: ```.../api/<coll>```
+- GET
+  - by id: ```/getById```
+  - by field(s): ```/getBy<field>And<field>...```
+  - entire collection: ```/getAll```
+- POST
+  - initialize collection: ```/create```
+  - multiple: ```/postDocs```
+  - individual: ```/postDoc```
+- DELETE
+  - by id: ```/rmById```
+  - by field(s): ```/rmBy<field>And<field>...```
+  - entire collection: ```/rmAll```
+- HTTP Responses
+  - individual ```doc``` requested: ```<coll>``` *(no trailing "s")*
+  - number of ```doc```s requested uncertain: ```<coll>s```
+- Conflicts & Duplicates
+  - keep existing over incoming conflict: **default**
+  - override existing with incoming change: ```/<endpoint>Override```
+  - ignore conflicts and duplicates: ```/<endpoint>Ignore```
+
+## On-Screen
+
+### Film Series
+
+### Letterboxd
+
+### Links
+
+- Film Series
+  - [Dossier](https://docs.google.com/document/d/1dl00sQH2cXBExBTZp5KaAWoJ_r9gFSnaCfZxn-lVTEM/edit?usp=sharing)
+
+- Letterboxd
+  - [Profile](https://letterboxd.com/michaelbeebe)
+  - [Main Menu](https://letterboxd.com/michaelbeebe/list/main-menu/detail)
+  - [Diary](https://letterboxd.com/michaelbeebe/films/diary)
 
 ## Ideas for the Future
 
@@ -136,6 +157,7 @@ pnpm dev
 - [x] Make this the hub for my unfinished reviews / unlogged films bc i can't decide what to say / reviews i know i want to write in my head but too lazy so i just didnt log and dont want to forget about / etc.
 - [ ] Create & link youtube playlists for trailers, music moments, etc. in list descriptions instead of having to add video links to each entry
 - [ ] Create & link spotify playlists for soundracks, music moments, etc. in list descriptions instead of having to add song links to each entry
+- [ ] Make the sides of one of my pages look like curtains in a theater (and the top)
 
 ### Long-term
 

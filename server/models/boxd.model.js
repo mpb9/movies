@@ -1,6 +1,7 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 const { Schema, model } = mongoose;
 
+// ! inactive
 const boxdSchema = new Schema({
   title: String,
   slug: String,
@@ -19,5 +20,5 @@ const boxdSchema = new Schema({
   ],
 });
 
-const Boxd = model('Boxd', boxdSchema);
+const Boxd = model("Boxd", boxdSchema);
 export default Boxd;

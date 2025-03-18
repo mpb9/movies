@@ -1,6 +1,8 @@
-import cors from 'cors';
-import express from 'express';
-import boxd from './routes/boxd.routes.js';
+import cors from "cors";
+import express from "express";
+import boxd from "./routes/boxd.routes.js";
+import site from "./routes/site.routes.js";
+import siteCat from "./routes/siteCat.routes.js";
 
 const PORT = process.env.PORT || 2046;
 const app = express();
@@ -12,8 +14,14 @@ app.use((req, res, next) => {
   next();
 });
 app.use(express.json());
-app.use('/boxd', boxd);
 
 // info: Routes
+app.use("/api/site", site);
+app.use("/api/boxd", boxd);
+app.use("/api/site_cat", siteCat);
+app.get("/", (req, res) => {
+  res.json({ message: "Hello from the API!" });
+});
 
+// info: Start the server
 app.listen(PORT, () => console.log(`movies/server listening on port ${PORT}!`));

@@ -1,23 +1,15 @@
-import { useState } from 'react';
-import './App.css';
-import moviesLogo2 from './assets/img/movies2.png';
-
-function App() {
-  const [count, setCount] = useState(0);
-
+import { RouterProvider } from "react-router-dom";
+import BottomBar from "./components/bottomBar";
+import SideBar from "./components/SideBar";
+import { router } from "./routes";
+export default function App() {
   return (
-    <>
-      <div>
-        <a href='https://react.dev' target='_blank'>
-          <img src={moviesLogo2} className='logo react' alt='React logo' />
-        </a>
+    <div className="w-[100vw] h-[100vh] flex">
+      <SideBar />
+      <div className="flex flex-col w-full h-full bg-[var(--d-gray)] bg-[linear-gradient(to_right,#a0b1b812_1px,transparent_1px),linear-gradient(to_bottom,#a0b1b812_1px,transparent_1px)] bg-[size:18px_18px]">
+        <RouterProvider router={router} />
+        <BottomBar />
       </div>
-      <h1>The Movies</h1>
-      <div className='card'>
-        <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-      </div>
-    </>
+    </div>
   );
 }
-
-export default App;
