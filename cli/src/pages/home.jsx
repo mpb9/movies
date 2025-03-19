@@ -1,15 +1,83 @@
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Category from "../components/Category";
+import { getSiteCatByName } from "../services/SiteCatService";
 
 export default function Home() {
+  const [filmSeries, setFilmSeries] = useState(null);
+  const [nowShowing, setNowShowing] = useState(null);
+  const [letterboxd, setLetterboxd] = useState(null);
+  const [miscellaneous, setMiscellaneous] = useState(null);
+  const [loaded, setLoaded] = useState(0);
+
+  useEffect(() => {
+    try {
+      getSiteCatByName("film series").then((res) => {
+        setFilmSeries(res);
+        updateLoaded();
+      });
+    } catch (err) {
+      console.error(err);
+      updateLoaded();
+    }
+  }, []);
+
+  useEffect(() => {
+    try {
+      getSiteCatByName("letterboxd").then((res) => {
+        setLetterboxd(res);
+        updateLoaded();
+      });
+    } catch (err) {
+      console.error(err);
+      updateLoaded();
+    }
+  }, []);
+
+  useEffect(() => {
+    try {
+      getSiteCatByName("miscellaneous").then((res) => {
+        setMiscellaneous(res);
+        updateLoaded();
+      });
+    } catch (err) {
+      console.error(err);
+      updateLoaded();
+    }
+  }, []);
+
+  useEffect(() => {
+    try {
+      getSiteCatByName("now showing").then((res) => {
+        setNowShowing(res);
+        updateLoaded();
+      });
+    } catch (err) {
+      console.error(err);
+      updateLoaded();
+    }
+  }, []);
+
+  function updateLoaded() {
+    setLoaded((loaded) => loaded + 1);
+  }
+
+  if (loaded < 3) {
+    return (
+      <div className="flex items-center justify-center w-full h-full">
+        <h1 className="text-6xl text-[var(--gray)] font-black">loading...</h1>
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col w-full h-[calc(100%-3.5rem)] items-center">
-      <h1 className="text-6xl py-[10px] text-[var(--gray)] font-black">
+      <h1 className="text-6xl pb-3 pt-4 xl:pt-5 xl:pb-4 text-[var(--gray)] font-black">
         the movies!
       </h1>
 
       {/* QUICK LINKS */}
-      <div className="w-full flex items-center justify-center my-1 text-4xl italic font-light">
+      <div className="flex items-center justify-center w-full mt-3 mb-1 text-4xl italic font-light">
         <NavLink
           to="/spreadsheet"
           className="text-[var(--yellow)] hover:underline underline-offset-8"
@@ -27,14 +95,14 @@ export default function Home() {
       </div>
 
       {/* CATEGORIES */}
-      <div className="w-full h-full flex p-4 pt-8">
-        <div className="w-1/2 h-full flex flex-col px-3">
-          <Category name="film series" />
-          <Category name="now showing" />
+      <div className="flex flex-col w-full h-full p-4 pt-4 overflow-scroll md:pt-6 xl:pt-8 md:flex-row">
+        <div className="flex flex-col w-full px-3 md:w-1/2 h-fit md:h-full">
+          <Category siteCat={filmSeries} />
+          <Category siteCat={nowShowing} />
         </div>
-        <div className="w-1/2 h-full flex flex-col px-3">
-          <Category name="letterboxd" />
-          <Category name="miscellaneous" />
+        <div className="flex flex-col w-full h-full px-3 md:w-1/2">
+          <Category siteCat={letterboxd} />
+          <Category siteCat={miscellaneous} />
         </div>
       </div>
     </div>

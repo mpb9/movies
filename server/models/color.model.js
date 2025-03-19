@@ -1,4 +1,6 @@
 import mongoose from "mongoose";
+
+// info: creates schema
 const lColorSchema = new mongoose.Schema({
   hex: {
     type: String,
@@ -68,25 +70,7 @@ const colorSchema = new mongoose.Schema({
   },
 });
 
-const siteCatSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-  },
-  color: {
-    type: colorSchema,
-    required: false,
-  },
-  url: {
-    type: String,
-    required: false,
-  },
-  navLink: {
-    type: String,
-    required: false,
-  },
-});
+// info: creates model, also creates collection (if it doesn't exist)
+const Color = mongoose.model("Color", colorSchema);
 
-const SiteCat = mongoose.model("SiteCat", siteCatSchema);
-
-export default SiteCat;
+export default Color;

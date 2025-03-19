@@ -3,17 +3,17 @@
 :root {
   --black: #040605;
   --brown: #2a1204;
-  --white: #f7fee7;
+  --white: #eef4e0;
   --red: #950d1b;
   --l-red: #ea665c;
   --yellow: #fee685;
   --l-yellow: #bcc1a9;
-  --green: #0b8457;
+  --green: #07b073;
   --l-green: #87ab9e;
-  --blue: #113c87;
-  --l-blue: #6f89bf;
-  --purple: #551d87;
-  --l-purple: #9772bb;
+  --blue: #0e3e92;
+  --l-blue: #6d8ed2;
+  --purple: #631da2;
+  --l-purple: #ad76e1;
   --pink: #e6b2a6;
   --l-pink: #f4d1c6;
   --orange: #f9a03f;
@@ -34,4 +34,17 @@ body {
 }
 .btn:hover {
   box-shadow: 0 0 0.25rem 2px var(--gray);
+}
+
+input[type="text"]:focus {
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 1),
+    -1px -1px 6px rgba(255, 255, 255, 0.4), inset 3px 3px 10px rgba(0, 0, 0, 1),
+    inset -1px -1px 6px rgba(255, 255, 255, 0.4);
+}
+
+#textInputContainer input:valid,
+#textInputContainer input:focus {
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 1),
+    -1px -1px 6px rgba(255, 255, 255, 0.4), inset 3px 3px 10px rgba(0, 0, 0, 1),
+    inset -1px -1px 6px rgba(255, 255, 255, 0.4);
 }

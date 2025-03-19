@@ -1,103 +1,114 @@
 import {
-  ArrowFatLineLeft,
+  CaretDoubleLeft,
   Eyes,
-  Plus,
+  ListPlus,
   Television,
+  Textbox,
 } from "@phosphor-icons/react";
-import { PropTypes } from "prop-types";
 import { useEffect, useState } from "react";
-import { httpRequest } from "../services/GatewayService";
+import { getSitesBySubscribedAndCat } from "../services/SiteService.js";
+import AddSiteForm from "./forms/AddSiteForm";
+import EditSiteForm from "./forms/EditSiteForm";
 
 // MARK: SideBar
 export default function SideBar() {
   const [isOpen, setIsOpen] = useState(true);
   const [sites, setSites] = useState(null);
+  const [showAddSiteForm, setShowAddSiteForm] = useState(false);
+  const [showEditSiteForm, setShowEditSiteForm] = useState(false);
 
-  const sideBarContainerCss =
-    "w-22 h-[100vh] pl-2 pr-3 pt-3 flex flex-col items-center justify-start border-none bg-[var(--d-gray)]";
-
+  // info: http request to get sites
   useEffect(() => {
-    httpRequest("/api/site/subscribed/1/cat/streaming")
+    getSitesBySubscribedAndCat(1, "streaming")
       .then((res) => {
-        setTimeout(() => {
-          setSites(res.sites);
-        }, 400);
+        setSites(res);
       })
       .catch((err) => console.error(err));
-  }, []);
+  }, [showAddSiteForm, showEditSiteForm]);
 
+  // info: toggle sidebar and site forms
   function toggleSidebar() {
     setIsOpen(!isOpen);
+  }
+  function toggleAddSiteForm() {
+    setShowAddSiteForm(!showAddSiteForm);
+  }
+  function toggleEditSiteForm() {
+    setShowEditSiteForm(!showEditSiteForm);
   }
 
   return (
     <>
-      {sites == null ? (
-        <div className={sideBarContainerCss}>
-          <div className="w-14 rounded-xl bg-[var(--d-gray)] flex p-1 items-center justify-around blur-xs">
-            <ArrowFatLineLeft weight="duotone" size={28} color="var(--white)" />
-          </div>
-          <div className="w-14 cursor-pointer rounded-xl p-1 mt-4 bg-[var(--d-gray)] flex items-center justify-around blur-xs">
-            <Plus weight="bold" size={28} color="var(--white)" />
-          </div>
-        </div>
-      ) : (
+      {isOpen && sites != null ? (
+        // MARK: sidebar open
         <>
-          {isOpen ? (
-            <SideBarOpen
-              toggleSidebar={toggleSidebar}
-              sites={sites}
-              sideBarContainerCss={sideBarContainerCss}
-            />
-          ) : (
-            <div className="top-3 left-3 fixed">
-              <div
-                className="btn cursor-pointer rounded-xl bg-[var(--l-green)] p-1 flex items-center justify-around hover:scale-105 transition-transform duration-300"
-                onClick={toggleSidebar}
-              >
-                <Television weight="duotone" size={36} color="var(--d-gray)" />
-                <Eyes weight="duotone" size={30} color="var(--d-gray)" />
-              </div>
+          <div className="w-28 h-[100vh] pl-2 pr-3 pt-3 flex flex-col items-center justify-start border-none bg-[var(--black)]">
+            <div
+              className="peer btn w-14 cursor-pointer rounded-xl p-1 bg-[var(--d-gray)] flex items-center justify-around hover:scale-110 transition-transform duration-500"
+              onClick={toggleSidebar}
+            >
+              <CaretDoubleLeft
+                weight="duotone"
+                size={42}
+                color="var(--white)"
+              />
             </div>
+
+            <div className="flex flex-col items-center w-5/6 pl-1 my-2 overflow-scroll transition-all duration-500 peer-hover:opacity-50">
+              {sites.map((site) => (
+                <a
+                  className="py-2 transition-all hover:animate-spin hover:hue-rotate-180"
+                  href={site.url}
+                  target="_blank"
+                  key={site.name}
+                >
+                  <img
+                    className="rounded-xl"
+                    src={site.iconSrc}
+                    alt={site.name}
+                  />
+                </a>
+              ))}
+            </div>
+
+            <div
+              className="btn peer w-14 cursor-pointer rounded-xl p-1 bg-[var(--d-gray)] flex items-center justify-around peer-hover:opacity-50 hover:scale-110 transition-transform duration-500 mt-3 mb-4"
+              onClick={toggleEditSiteForm}
+            >
+              <Textbox weight="duotone" size={42} color="var(--white)" />
+            </div>
+            <div
+              className="btn peer w-14 cursor-pointer rounded-xl p-1 bg-[var(--d-gray)] flex items-center justify-around peer-hover:opacity-50 hover:scale-110 transition-transform duration-500 mb-2"
+              onClick={toggleAddSiteForm}
+            >
+              <ListPlus weight="duotone" size={42} color="var(--white)" />
+            </div>
+          </div>
+          {showAddSiteForm && (
+            <AddSiteForm
+              initialCat="streaming"
+              toggleAddSiteForm={toggleAddSiteForm}
+            />
+          )}
+          {showEditSiteForm && (
+            <EditSiteForm
+              sites={sites}
+              toggleEditSiteForm={toggleEditSiteForm}
+            />
           )}
         </>
+      ) : (
+        // MARK: sidebar closed
+        <div className="fixed top-5 left-8">
+          <div
+            className="flex items-center justify-around p-1 transition-transform duration-300 cursor-pointer btn rounded-xl hover:scale-105"
+            onClick={toggleSidebar}
+          >
+            <Television weight="duotone" size={60} color="var(--l-green)" />
+            <Eyes weight="duotone" size={50} color="var(--l-green)" />
+          </div>
+        </div>
       )}
     </>
-  );
-}
-
-// MARK: SideBarOpen
-SideBarOpen.propTypes = {
-  toggleSidebar: PropTypes.func.isRequired,
-  sites: PropTypes.array,
-  sideBarContainerCss: PropTypes.string,
-};
-function SideBarOpen({ toggleSidebar, sites, sideBarContainerCss }) {
-  // ! add functionality to add new site
-  return (
-    <div className={sideBarContainerCss}>
-      <div
-        className="btn peer w-14 cursor-pointer rounded-xl p-1 bg-[var(--d-gray)] flex items-center justify-around hover:scale-110 transition-transform duration-500"
-        onClick={toggleSidebar}
-      >
-        <ArrowFatLineLeft weight="fill" size={28} color="var(--white)" />
-      </div>
-
-      <div className="flex flex-col overflow-scroll my-3 items-center peer-hover:opacity-50 duration-500 transition-all">
-        {sites.map((site) => (
-          <a
-            className="py-2 transition-all hover:animate-spin hover:hue-rotate-180"
-            href={site.url}
-            target="_blank"
-            key={site.name}
-          >
-            <img className="rounded-xl" src={site.iconSrc} alt={site.name} />
-          </a>
-        ))}
-      </div>
-      <div className="btn peer w-14 cursor-pointer rounded-xl p-1 bg-[var(--d-gray)] flex items-center justify-around peer-hover:opacity-50 hover:scale-110 transition-transform duration-500">
-        <Plus weight="bold" size={28} color="var(--white)" />
-      </div>
-    </div>
   );
 }

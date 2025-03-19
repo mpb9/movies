@@ -33,7 +33,7 @@ export const initialSiteColl = [
     cat: "letterboxd",
   },
   {
-    name: "main menu",
+    name: "menu",
     url: "https://letterboxd.com/michaelbeebe/list/main-menu/detail/",
     cat: "letterboxd",
   },

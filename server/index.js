@@ -1,6 +1,7 @@
 import cors from "cors";
 import express from "express";
 import boxd from "./routes/boxd.routes.js";
+import color from "./routes/color.routes.js";
 import site from "./routes/site.routes.js";
 import siteCat from "./routes/siteCat.routes.js";
 
@@ -19,6 +20,7 @@ app.use(express.json());
 app.use("/api/site", site);
 app.use("/api/boxd", boxd);
 app.use("/api/site_cat", siteCat);
+app.use("/api/color", color);
 app.get("/", (req, res) => {
   res.json({ message: "Hello from the API!" });
 });
