@@ -1,10 +1,19 @@
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
+import jsconfigPaths from "vite-jsconfig-paths";
 
-// https://vite.dev/config/
 export default defineConfig({
-  plugins: [tailwindcss(), react()],
+  plugins: [tailwindcss(), react(), jsconfigPaths()],
+  resolve: {
+    alias: {
+      src: "/src",
+      components: "/src/components",
+      pages: "/src/pages",
+      services: "/src/services",
+      assets: "/src/assets",
+    },
+  },
   server: {
     port: 3000,
   },

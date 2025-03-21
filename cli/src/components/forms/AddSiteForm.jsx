@@ -45,9 +45,9 @@ export default function AddSiteForm({ initialCat, toggleAddSiteForm }) {
   return (
     <>
       <ModalBackdrop />
-      <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/3 w-1/2 p-4 bg-[var(--d-gray)] rounded-xl border-2 border-[var(--green)] z-10">
-        <div className="flex items-center justify-center text-3xl text-[var(--white)]">
-          Add Site
+      <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/3 w-1/2 p-4 bg-gradient-to-b from-[var(--black)] to-[var(--d-gray)] rounded-xl border-2 border-[var(--green)] z-10">
+        <div className="flex items-center justify-center text-3xl text-[var(--white)] font-thin">
+          ADD SITE
         </div>
         <form
           className="flex flex-col items-center w-full mt-3 text-xl"
@@ -88,7 +88,7 @@ export default function AddSiteForm({ initialCat, toggleAddSiteForm }) {
             color="green"
           />
 
-          <div className="flex w-full justify-around text-[var(--white)] text-2xl mt-6 mb-4 font-black">
+          <div className="flex w-full justify-around text-[var(--black)] text-2xl mt-6 mb-4 font-black">
             <button
               className="btn cursor-pointer rounded-xl bg-[var(--orange)] p-1 px-3 hover:scale-105 transition-transform duration-300"
               onClick={(e) => cancelAddSiteForm(e)}

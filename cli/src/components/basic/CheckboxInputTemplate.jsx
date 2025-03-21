@@ -14,7 +14,7 @@ export default function CheckboxInputTemplate({
   color = "green",
 }) {
   const checkboxInputCss = `peer h-6 w-6 cursor-pointer transition-all bg-[var(--d-gray)] appearance-none rounded shadow hover:shadow-md border-2 border-[var(--l-${color})] checked:bg-[var(--${color})] checked:border-[var(--l-${color})]`;
-  const checkboxInputLabelCss = `ml-3 cursor-pointer text-[var(--${color})] font-bold`;
+  const checkboxInputLabelCss = `ml-3 cursor-pointer text-[var(--${color})] font-bold pb-[1px]`;
 
   function handleStateChange(e) {
     onStateChange(e.target.checked);

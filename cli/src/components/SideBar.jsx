@@ -1,5 +1,5 @@
 import {
-  CaretDoubleLeft,
+  ArrowFatLineLeft,
   Eyes,
   ListPlus,
   Television,
@@ -42,22 +42,18 @@ export default function SideBar() {
       {isOpen && sites != null ? (
         // MARK: sidebar open
         <>
-          <div className="w-28 h-[100vh] pl-2 pr-3 pt-3 flex flex-col items-center justify-start border-none bg-[var(--black)]">
+          <div className="w-24 h-[100vh] pt-4 pb-6 flex flex-col items-center pl-[2px] pr-[2px] justify-between bg-[linear-gradient(to_right,#a0b1b812_1px,transparent_1px),linear-gradient(to_bottom,#a0b1b812_1px,transparent_1px)] bg-[size:6px_9px]">
             <div
-              className="peer btn w-14 cursor-pointer rounded-xl p-1 bg-[var(--d-gray)] flex items-center justify-around hover:scale-110 transition-transform duration-500"
+              className="peer h-fit cursor-pointer rounded-xl flex items-center hover:scale-125 transition-all duration-300 text-[var(--white)] opacity-75"
               onClick={toggleSidebar}
             >
-              <CaretDoubleLeft
-                weight="duotone"
-                size={42}
-                color="var(--white)"
-              />
+              <ArrowFatLineLeft weight="fill" size={42} color="currentColor" />
             </div>
 
-            <div className="flex flex-col items-center w-5/6 pl-1 my-2 overflow-scroll transition-all duration-500 peer-hover:opacity-50">
+            <div className="flex flex-col items-center w-3/4 pt-4 pb-[60vh] overflow-scroll transition-all duration-300 peer-hover:opacity-25">
               {sites.map((site) => (
                 <a
-                  className="py-2 transition-all hover:animate-spin hover:hue-rotate-180"
+                  className="py-1.5 transition-all duration-300 grayscale-[95%] hover:grayscale-0 hover:scale-[1.15]"
                   href={site.url}
                   target="_blank"
                   key={site.name}
@@ -71,17 +67,19 @@ export default function SideBar() {
               ))}
             </div>
 
-            <div
-              className="btn peer w-14 cursor-pointer rounded-xl p-1 bg-[var(--d-gray)] flex items-center justify-around peer-hover:opacity-50 hover:scale-110 transition-transform duration-500 mt-3 mb-4"
-              onClick={toggleEditSiteForm}
-            >
-              <Textbox weight="duotone" size={42} color="var(--white)" />
-            </div>
-            <div
-              className="btn peer w-14 cursor-pointer rounded-xl p-1 bg-[var(--d-gray)] flex items-center justify-around peer-hover:opacity-50 hover:scale-110 transition-transform duration-500 mb-2"
-              onClick={toggleAddSiteForm}
-            >
-              <ListPlus weight="duotone" size={42} color="var(--white)" />
+            <div className="pt-4 transition-all duration-300 peer-hover:opacity-25 text-[var(--white)] opacity-75">
+              <div
+                className="flex items-center justify-around transition-all duration-300 cursor-pointer peer w-14 rounded-xl hover:scale-125"
+                onClick={toggleEditSiteForm}
+              >
+                <Textbox weight="regular" size={42} color="currentColor" />
+              </div>
+              <div
+                className="flex items-center justify-around mt-4 transition-all duration-300 cursor-pointer peer w-14 rounded-xl hover:scale-125"
+                onClick={toggleAddSiteForm}
+              >
+                <ListPlus weight="regular" size={42} color="currentColor" />
+              </div>
             </div>
           </div>
           {showAddSiteForm && (

@@ -2,9 +2,9 @@ import { ListPlus, Textbox } from "@phosphor-icons/react";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { getSitesByCat } from "../services/SiteService.js";
-import AddSiteForm from "./forms/AddSiteForm";
-import EditSiteForm from "./forms/EditSiteForm";
+import { getSitesByCat } from "services/SiteService.js";
+import AddSiteForm from "./forms/AddSiteForm.jsx";
+import EditSiteForm from "./forms/EditSiteForm.jsx";
 
 Category.propTypes = {
   siteCat: PropTypes.object,
@@ -23,7 +23,7 @@ export default function Category({ siteCat }) {
       if (res === 0) return;
       setSites(res);
     });
-  }, [showAddSiteForm, showEditSiteForm]);
+  }, [showAddSiteForm, showEditSiteForm, siteCat]);
 
   function toggleAddSiteForm() {
     setShowAddSiteForm(!showAddSiteForm);
