@@ -6,9 +6,9 @@ import {
   Textbox,
 } from "@phosphor-icons/react";
 import { useEffect, useState } from "react";
-import { getSitesBySubscribedAndCat } from "../services/SiteService.js";
-import AddSiteForm from "./forms/AddSiteForm";
-import EditSiteForm from "./forms/EditSiteForm";
+import { getSitesBySubscribedAndCat } from "../../services/SiteService.js";
+import AddSiteForm from "../forms/AddSiteForm.jsx";
+import EditSiteForm from "../forms/EditSiteForm.jsx";
 
 // MARK: SideBar
 export default function SideBar() {
@@ -97,13 +97,18 @@ export default function SideBar() {
         </>
       ) : (
         // MARK: sidebar closed
-        <div className="fixed top-5 left-8">
+        <div className="fixed top-6 left-6">
           <div
-            className="flex items-center justify-around p-1 transition-transform duration-300 cursor-pointer btn rounded-xl hover:scale-105"
+            className="flex items-center justify-around p-1 text-[var(--white)] opacity-70 transition-transform duration-300 cursor-pointer rounded-xl hover:scale-110"
             onClick={toggleSidebar}
           >
-            <Television weight="duotone" size={60} color="var(--l-green)" />
-            <Eyes weight="duotone" size={50} color="var(--l-green)" />
+            <Television weight="duotone" size={48} color="currentColor" />
+            <Eyes
+              weight="duotone"
+              size={34}
+              color="currentColor"
+              className="mt-1"
+            />
           </div>
         </div>
       )}

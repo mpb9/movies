@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Loading from "src/components/Loading";
-import TopBar from "src/components/TopBar";
+import TopBar from "src/components/bars/TopBar";
 import { getSiteCatByName } from "../services/SiteCatService";
 
 export default function Boxd() {

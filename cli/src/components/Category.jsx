@@ -1,4 +1,4 @@
-import { ListPlus, Textbox } from "@phosphor-icons/react";
+import { BracketsCurly, ListPlus, Textbox } from "@phosphor-icons/react";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
@@ -9,7 +9,6 @@ import EditSiteForm from "./forms/EditSiteForm.jsx";
 Category.propTypes = {
   siteCat: PropTypes.object,
 };
-
 export default function Category({ siteCat }) {
   const [sites, setSites] = useState([]);
   const [showAddSiteForm, setShowAddSiteForm] = useState(false);
@@ -40,19 +39,30 @@ export default function Category({ siteCat }) {
           style={{ borderColor: siteCat.color.l.hex }}
         >
           {/* BUTTONS */}
-          <div className="absolute flex items-center justify-end top-2 right-4">
+          <div
+            className="absolute flex items-center justify-end top-2 right-4"
+            style={{ color: siteCat.color.l.hex }}
+          >
             <div
               className="cursor-pointer rounded-md bg-[var(--d-gray)] px-0.5 hover:scale-125 transition-transform duration-200 mr-2.5"
               onClick={toggleEditSiteForm}
             >
-              <Textbox weight="thin" size={34} color={siteCat.color.l.hex} />
+              <Textbox weight="thin" size={34} color="currentColor" />
             </div>
             <div
-              className="cursor-pointer rounded-md bg-[var(--d-gray)] px-0.5 hover:scale-125 transition-transform duration-200"
+              className="cursor-pointer rounded-md bg-[var(--d-gray)] px-0.5 hover:scale-125 transition-transform duration-200 mr-2.5"
               onClick={toggleAddSiteForm}
             >
-              <ListPlus weight="thin" size={30} color={siteCat.color.l.hex} />
+              <ListPlus weight="thin" size={32} color="currentColor" />
             </div>
+            <NavLink
+              to="/jsonified"
+              title="jsonified"
+              docs={sites}
+              className="cursor-pointer rounded-md bg-[var(--d-gray)] px-0.5 hover:scale-125 transition-transform duration-200"
+            >
+              <BracketsCurly weight="thin" size={30} color="currentColor" />
+            </NavLink>
           </div>
           {/* TITLE */}
           {siteCat.url != undefined && siteCat.url != null ? (
@@ -90,7 +100,7 @@ export default function Category({ siteCat }) {
             {sites.map((site) => (
               <a
                 key={site._id}
-                className="text-[var(--gray)] text-[1.4rem] leading-7 hover:underline p-1 px-3 m-1 my-1.5 bg-[var(--d-gray)] rounded-xl font-medium"
+                className="text-[var(--gray)] lowercase text-[1.4rem] leading-7 hover:underline p-1 px-3 m-1 my-1.5 bg-[var(--d-gray)] rounded-xl font-medium"
                 href={site.url}
                 target="_blank"
                 rel="noreferrer"

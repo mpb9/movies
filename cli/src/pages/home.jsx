@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Loading from "src/components/Loading";
-import BottomBar from "../components/BottomBar";
+import BottomBar from "../components/bars/BottomBar";
 import Category from "../components/Category";
 import { getSiteCatByName } from "../services/SiteCatService";
 
@@ -73,7 +73,7 @@ export default function Home() {
   return (
     <>
       <div className="flex flex-col w-full h-[calc(100%-3.5rem)] items-center">
-        <h1 className="text-6xl pb-3 pt-4 xl:pt-5 xl:pb-4 text-[var(--gray)] font-black">
+        <h1 className="text-6xl pb-3 pt-4 xl:pt-5 xl:pb-4 text-[var(--gray)] font-black cursor-default">
           the movies!
         </h1>
 

@@ -11,11 +11,11 @@ import {
 
 export default function BottomBar() {
   const aCss =
-    "cursor-pointer rounded-xl p-1 mx-2.5 transition-all hover:hue-rotate-180 hover:scale-125";
+    "cursor-pointer rounded-xl py-1 px-0.5 mx-2 transition-all hover:scale-[1.2] hover:hue-rotate-45 duration-200";
 
   return (
     <div className="static bottom-0 flex justify-center w-full">
-      <div className="flex items-center justify-center px-8 pt-2 pb-2 transition-transform duration-200 bg-black rounded-full rounded-b-none w-fit hover:scale-125">
+      <div className="flex items-center justify-center px-8 pt-1.5 pb-1 transition-all duration-300 bg-[var(--black)] rounded-full rounded-b-none w-fit hover:scale-[1.2] hover:pb-2 hover:pt-2 hover:px-10">
         <a
           className={aCss}
           href="https://graphics-playground.com/"
@@ -40,7 +40,7 @@ export default function BottomBar() {
         >
           <Person weight="fill" size={44} color="var(--l-purple)" />
         </a>
-        <LineVertical weight="thin" size={44} color="var(--gray)" />
+        <LineVertical weight="thin" size={48} color="var(--gray)" />
         <a
           className={aCss}
           href="https://calendar.google.com/calendar/u/0/r"
@@ -49,7 +49,7 @@ export default function BottomBar() {
         >
           <Calendar weight="fill" size={44} color="var(--l-yellow)" />
         </a>
-        <LineVertical weight="thin" size={44} color="var(--gray)" />
+        <LineVertical weight="thin" size={48} color="var(--gray)" />
         <a
           className={aCss}
           href="https://github.com/mpb9/movies"
