@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 
+// allow the props thru NavLink via the URL?
 Jsonified.propTypes = {
   docs: PropTypes.object.isRequired,
 };

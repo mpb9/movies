@@ -13,13 +13,17 @@ export default function CheckboxInputTemplate({
   onStateChange,
   color = "green",
 }) {
-  const checkboxInputCss = `peer h-6 w-6 cursor-pointer transition-all bg-[var(--d-gray)] appearance-none rounded shadow hover:shadow-md border-2 border-[var(--l-${color})] checked:bg-[var(--${color})] checked:border-[var(--l-${color})]`;
+  const checkboxInputCss = `peer h-6 w-6 cursor-pointer transition-all bg-[var(--d-gray)] appearance-none rounded shadow hover:shadow-md border-2 border-[var(--l-${color})]`;
   const checkboxInputLabelCss = `ml-3 cursor-pointer text-[var(--${color})] font-bold pb-[1px]`;
 
   function handleStateChange(e) {
     onStateChange(e.target.checked);
   }
 
+  if (!color) {
+    console.error("CheckboxInputTemplate: color prop is required");
+    return null;
+  }
   return (
     <div className="inline-flex items-center my-3" id="checkboxInputContainer">
       <label
@@ -34,13 +38,13 @@ export default function CheckboxInputTemplate({
           checked={value}
           onChange={(e) => handleStateChange(e)}
         />
-        <span className="absolute text-[var(--d-gray)] opacity-0 peer-checked:opacity-100 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <span className="absolute text-[var(--d-gray)] opacity-0 peer-checked:opacity-100 top-[30%] left-[60%] transform -translate-x-1/2 -translate-y-1/2 -rotate-6">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="w-8 h-12"
+            className="w-12 h-14"
             viewBox="0 0 20 20"
-            fill="currentColor"
-            stroke="currentColor"
+            fill={`var(--l-${color})`}
+            stroke={`var(--${color})`}
             strokeWidth={1}
           >
             <path

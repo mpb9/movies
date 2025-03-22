@@ -1,10 +1,10 @@
+import CheckboxInputTemplate from "components/basic/CheckboxInputTemplate";
+import ModalBackdrop from "components/basic/ModalBackdrop";
+import SelectInputTemplate from "components/basic/SelectInputTemplate";
+import TextInputTemplate from "components/basic/TextInputTemplate";
 import { PropTypes } from "prop-types";
 import { useState } from "react";
-import { deleteSiteByName, updateSiteByName } from "../../services/SiteService";
-import CheckboxInputTemplate from "../basic/CheckboxInputTemplate";
-import ModalBackdrop from "../basic/ModalBackdrop";
-import SelectInputTemplate from "../basic/SelectInputTemplate";
-import TextInputTemplate from "../basic/TextInputTemplate";
+import { deleteSiteByName, updateSiteByName } from "services/SiteService";
 
 EditSiteForm.propTypes = {
   sites: PropTypes.arrayOf(

@@ -20,6 +20,11 @@
   --l-orange: #f5cb93;
   --gray: #a9bbc3;
   --d-gray: #131315;
+
+  --boxd-gray: #445466;
+  --boxd-orange: #ff8001;
+  --boxd-green: #00e054;
+  --boxd-blue: #3fbdf4;
 }
 html {
   -webkit-text-size-adjust: 100%;
@@ -32,6 +37,7 @@ body {
   color: var(--gray);
   font-family: "Lato", sans-serif;
 }
+
 .btn:hover {
   box-shadow: 0 0 0.25rem 2px var(--gray);
 }

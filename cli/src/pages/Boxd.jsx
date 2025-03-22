@@ -1,18 +1,14 @@
+import TopBar from "components/bars/TopBar";
+import PageTitleTemplate from "components/basic/PageTitleTemplate";
+import Loading from "pages/utils/Loading";
 import { useEffect, useState } from "react";
-import Loading from "src/components/Loading";
-import TopBar from "src/components/bars/TopBar";
-import { getSiteCatByName } from "../services/SiteCatService";
 
 export default function Boxd() {
-  // const [boxdCat, setBoxdCat] = useState(null);
   const [loaded, setLoaded] = useState(0);
 
   useEffect(() => {
     try {
-      getSiteCatByName("letterboxd").then((res) => {
-        // setBoxdCat(res);
-        updateLoaded();
-      });
+      updateLoaded();
     } catch (err) {
       console.error(err);
       updateLoaded();
@@ -25,16 +21,21 @@ export default function Boxd() {
 
   if (loaded < 1) return <Loading />;
   return (
-    <div className="flex flex-col items-center w-full h-full">
+    <>
       <TopBar />
-      <h1>Boxd</h1>
-    </div>
+      <div className="flex flex-col w-full h-full bg-[var(--d-gray)] bg-[linear-gradient(to_right,#FF80011b_2px,transparent_1px),linear-gradient(to_bottom,#3FBDF41b_2px,transparent_1px)] bg-[size:12px_12px]">
+        <div className="flex items-center justify-center w-full">
+          <PageTitleTemplate title="boxd" color="boxd-green" />
+        </div>
+      </div>
+    </>
   );
 }
 
 /*
 
 - main menu replica with options to edit each list
+- menu categories link to their respective tags
 - 
 
 */

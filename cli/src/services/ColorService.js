@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getSiteCatByName } from "./SiteCatService";
+import { getSiteCatByName } from "services/SiteCatService";
 
 const COLOR_API_URL = import.meta.env.REACT_APP_API_URL + "/api/color";
 

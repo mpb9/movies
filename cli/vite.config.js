@@ -1,7 +1,7 @@
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
-import jsconfigPaths from "vite-jsconfig-paths";
+import { jsconfigPaths } from "vite-jsconfig-paths";
 
 export default defineConfig({
   plugins: [tailwindcss(), react(), jsconfigPaths()],

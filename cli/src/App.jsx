@@ -1,14 +1,20 @@
-import { RouterProvider } from "react-router-dom";
-import SideBar from "./components/bars/SideBar.jsx";
-import { router } from "./routes";
+import Boxd from "pages/Boxd.jsx";
+import Home from "pages/Home.jsx";
+import Jsonified from "pages/Jsonified.jsx";
+import Spreadsheet from "pages/Spreadsheet.jsx";
+import { Route, Routes } from "react-router-dom";
+import InvalidRoute from "./pages/InvalidRoute";
 
 export default function App() {
   return (
     <div className="w-[100vw] h-[100vh] flex">
-      <SideBar />
-      <div className="flex flex-col w-full h-full bg-[var(--d-gray)] bg-[linear-gradient(to_right,#a0b1b812_1px,transparent_1px),linear-gradient(to_bottom,#a0b1b812_1px,transparent_1px)] bg-[size:18px_18px]">
-        <RouterProvider router={router} />
-      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/spreadsheet" element={<Spreadsheet />} />
+        <Route path="/boxd" element={<Boxd />} />
+        <Route path="/jsonified" element={<Jsonified />} />
+        <Route path="*" element={<InvalidRoute />} />
+      </Routes>
     </div>
   );
 }

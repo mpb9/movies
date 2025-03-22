@@ -6,12 +6,12 @@
 .DS_Store
 .pnpm
 
-# Film Series
-
-# Letterboxd
-
 # server
 /server/config.env
 
 # cli
 /cli/.env
+/cli/letterboxd
+
+# planning
+/planning

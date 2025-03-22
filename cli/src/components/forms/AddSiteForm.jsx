@@ -1,9 +1,9 @@
+import CheckboxInputTemplate from "components/basic/CheckboxInputTemplate";
+import ModalBackdrop from "components/basic/ModalBackdrop";
+import TextInputTemplate from "components/basic/TextInputTemplate";
 import { PropTypes } from "prop-types";
 import { useState } from "react";
-import { addSite } from "../../services/SiteService";
-import CheckboxInputTemplate from "../basic/CheckboxInputTemplate";
-import ModalBackdrop from "../basic/ModalBackdrop";
-import TextInputTemplate from "../basic/TextInputTemplate";
+import { addSite } from "services/SiteService";
 
 AddSiteForm.propTypes = {
   initialCat: PropTypes.string,

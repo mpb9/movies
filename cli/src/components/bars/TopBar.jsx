@@ -3,12 +3,12 @@ import { NavLink } from "react-router-dom";
 
 export default function TopBar() {
   return (
-    <div className="fixed top-3 right-3">
+    <div className="absolute top-0 right-4 md:right-7 xl:right-10">
       <NavLink
         to="/"
-        className="btn cursor-pointer rounded-xl bg-[var(--gray)] p-1 flex items-center justify-around hover:scale-105 transition-transform duration-300"
+        className="flex items-center p-1 text-[var(--white)] opacity-70 transition-discrete duration-300 cursor-pointer rounded-xl hover:scale-110 mt-3.5 xl:mt-5"
       >
-        <House weight="thin" size={28} color="var(--d-gray)" />
+        <House weight="light" size={60} color="var(--white)" />
       </NavLink>
     </div>
   );
