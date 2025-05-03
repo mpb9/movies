@@ -1,4 +1,4 @@
-import TopBar from "components/bars/TopBar";
+import TopBar from "components/navbars/TopBar";
 
 export default function Spreadsheet() {
   return (

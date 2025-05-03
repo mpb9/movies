@@ -6,6 +6,7 @@
   --white: #eef4e0;
   --red: #950d1b;
   --l-red: #ea665c;
+  --d-red: #100606;
   --yellow: #fee685;
   --l-yellow: #bcc1a9;
   --green: #07b073;
@@ -36,6 +37,15 @@ body {
   margin: 0 auto;
   color: var(--gray);
   font-family: "Lato", sans-serif;
+}
+
+#home {
+  background-image: linear-gradient(to right, #8c7d9010 18px, transparent 1px),
+    linear-gradient(to bottom, #0000004b 1px, transparent 1px);
+  background-size: 24px 16px;
+  background-color: var(--d-red);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 .btn:hover {

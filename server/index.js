@@ -26,4 +26,6 @@ app.get("/", (req, res) => {
 });
 
 // info: Start the server
-app.listen(PORT, () => console.log(`movies/server listening on port ${PORT}!`));
+app.listen(PORT, () =>
+  console.log(`\nmovies/server listening on port ${PORT}!`)
+);

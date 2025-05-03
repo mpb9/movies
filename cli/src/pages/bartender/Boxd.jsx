@@ -1,5 +1,5 @@
-import TopBar from "components/bars/TopBar";
 import PageTitleTemplate from "components/basic/PageTitleTemplate";
+import TopBar from "components/navbars/TopBar";
 import Loading from "pages/utils/Loading";
 import { useEffect, useState } from "react";
 

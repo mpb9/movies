@@ -1,5 +1,5 @@
-import TopBar from "src/components/bars/TopBar";
 import PageTitleTemplate from "src/components/basic/PageTitleTemplate";
+import TopBar from "src/components/navbars/TopBar";
 
 export default function InvalidRoute() {
   return (
