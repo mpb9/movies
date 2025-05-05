@@ -39,6 +39,8 @@ body {
   font-family: "Lato", sans-serif;
 }
 
+/* MARK: Home.jsx
+*/
 #home {
   background-image: linear-gradient(to right, #8c7d9010 18px, transparent 1px),
     linear-gradient(to bottom, #0000004b 1px, transparent 1px);
@@ -48,6 +50,17 @@ body {
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
+#home-header {
+  background-image: linear-gradient(to right, #8c7d9010 18px, transparent 1px),
+    linear-gradient(to bottom, #0000002b 1px, transparent 1px);
+  background-size: 24px 16px;
+  background-color: #130707fe;
+  border-bottom: 3px solid #0f0606aa;
+  box-shadow: 0 0 10px 6px #0f0606aa;
+}
+
+/* MARK: Misc.
+ */
 .btn:hover {
   box-shadow: 0 0 0.25rem 2px var(--gray);
 }

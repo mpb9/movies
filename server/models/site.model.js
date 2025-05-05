@@ -30,5 +30,4 @@ const siteSchema = new mongoose.Schema({
 
 // info: creates model, also creates collection (if it doesn't exist)
 const Site = mongoose.model("Site", siteSchema);
-
 export default Site;
